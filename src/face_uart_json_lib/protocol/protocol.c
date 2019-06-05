@@ -1109,6 +1109,8 @@ static uint8_t protocol_prase_query_face_ret(cJSON *root)
     printf("this query face num: %d\r\n", face_ret.face_infos.face_num);
 #endif
 
+    face_ret.face_infos.face_info = NULL;
+
     if (face_ret.face_infos.face_num > 0)
     {
         face_ret.face_infos.face_info = (void *)malloc(sizeof(void *) * face_ret.face_infos.face_num);
