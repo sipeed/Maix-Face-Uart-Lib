@@ -182,6 +182,17 @@ int uart_receive_data(uart_device_number_t channel, char *buffer, size_t buf_len
     return i;
 }
 
+uint8_t uart_channel_getchar(uart_device_number_t channel, uint8_t *data)
+{
+    /* If received empty */
+    if (!(uart[channel]->LSR & 1))
+    {
+        return 0;
+    }
+    *data = (uint8_t)(uart[channel]->RBR & 0xff);
+    return 1;
+}
+
 void uart_receive_data_dma(uart_device_number_t uart_channel, dmac_channel_number_t dmac_channel, uint8_t *buffer, size_t buf_len)
 {
     uint32_t *v_recv_buf = malloc(buf_len * sizeof(uint32_t));

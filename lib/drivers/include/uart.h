@@ -270,6 +270,8 @@ int uart_send_data(uart_device_number_t channel, const char *buffer, size_t buf_
  */
 int uart_receive_data(uart_device_number_t channel, char *buffer, size_t buf_len);
 
+uint8_t uart_channel_getchar(uart_device_number_t channel, uint8_t *data);
+
 /**
  * @brief       Init uart
  *
